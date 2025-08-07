@@ -64,7 +64,7 @@ def arxiv_to_json(html_content):
 
     def get_category():
         h1 = soup.select_one("div.subheader > h1")
-        return h1.get_text(strip=True) if h1 else None
+        return h1.get_text(strip=True).replace("Computer Science > ", "").strip() if h1 else None
 
     data = {
         "arxiv_id": get_text(".header-breadcrumbs-mobile strong"),
