@@ -1,5 +1,5 @@
 """
-Extract paper data from README.md into TSV format.
+Extract paper data from papers.md into TSV format.
 """
 
 import re
@@ -73,26 +73,26 @@ def parse_markdown_papers(content):
 
 
 def main():
-    """Main function to read README.md and create TSV output."""
+    """Main function to read papers.md and create TSV output."""
     
-    # Read the README.md file
-    readme_path = Path('README.md')
-    if not readme_path.exists():
-        print("ERROR: README.md not found in current directory")
+    # Read the papers.md file
+    papers_path = Path('papers.md')
+    if not papers_path.exists():
+        print("ERROR: papers.md not found in current directory")
         sys.exit(1)
     
     try:
-        with open(readme_path, 'r', encoding='utf-8') as f:
+        with open(papers_path, 'r', encoding='utf-8') as f:
             content = f.read()
     except Exception as e:
-        print(f"ERROR: Could not read README.md: {e}")
+        print(f"ERROR: Could not read papers.md: {e}")
         sys.exit(1)
     
     # Parse the content
     papers, link_types = parse_markdown_papers(content)
     
     if not papers:
-        print("WARNING: No papers found in README.md")
+        print("WARNING: No papers found in papers.md")
         return
     
     # Create field names for TSV (Heading, Paper, Paper-Link, Tweet-Link, Other-Links)
