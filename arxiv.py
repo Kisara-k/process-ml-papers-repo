@@ -71,7 +71,7 @@ def arxiv_to_json(html_content):
         "category": get_category(),
         "title": get_text("h1.title"),
         "authors": get_authors(),
-        "abstract": get_text("blockquote.abstract"),
+        "abstract": get_text("blockquote.abstract")[3:],
         "comments": get_text("td.comments"),
         "subjects": get_subjects(),
         "links": get_links(),
